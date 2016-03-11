@@ -105,9 +105,7 @@ def multithread_request(urls, config=None):
 
     pool = ThreadPool(num_threads, timeout)
 
-    m_requests = []
-    for url in urls:
-        m_requests.append(MRequest(url, config))
+    m_requests = [MRequest(url, config) for url in urls]
 
     for req in m_requests:
         pool.add_task(req.send)
